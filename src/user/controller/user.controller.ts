@@ -5,7 +5,7 @@ import { PagedResponseDto, ResponseEntityDto } from 'src/utils/dto/response-enti
 import { UserPostDto } from '../dto/user.dto';
 
 @ApiTags('User')
-@Controller('user')
+@Controller('users')
 export class UserController {
 
   constructor(private readonly userService: UserService) {}

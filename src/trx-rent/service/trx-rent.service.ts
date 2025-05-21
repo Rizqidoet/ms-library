@@ -91,4 +91,32 @@ export class TrxRentService {
 
     return response;
   }
+
+  async findActiveRentsByUser(userId: number): Promise<ResponseEntityDto<TrxRentEntity[]>> {
+    const rentActive = await this.trxRentRepo.find({
+      where: { user: { id: userId }, isActive: true },
+      relations: ['catalogue'],
+      order: { rentDate: 'DESC' },
+    });
+
+    const response = new ResponseEntityDto<TrxRentEntity[]>();
+    response.status = ResponseStatusEnum.SUCCESS,
+    response.data = rentActive;
+
+    return response;
+  }
+
+  async findAllActive(): Promise<ResponseEntityDto<TrxRentEntity[]>> {
+    const activeRents = await this.trxRentRepo.find({
+      where: { isActive: true },
+      relations: ['user', 'catalogue'],
+      order: { rentDate: 'DESC' },
+    });
+
+    const response = new ResponseEntityDto<TrxRentEntity[]>();
+    response.status = ResponseStatusEnum.SUCCESS;
+    response.data = activeRents;
+
+    return response;
+  }
 }

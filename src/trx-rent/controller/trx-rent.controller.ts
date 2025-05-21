@@ -25,4 +25,18 @@ export class TrxRentController {
     return this.trxRentService.returnBook(id);
   }
   
+
+  @Get('active')
+  @ApiOperation({ summary: 'Find active Rent by user' })
+  @ApiResponse({ status: 200, description: 'Success', type: ResponseEntityDto })
+  async activeRents(@Query('userId', ParseIntPipe) userId: number) {
+    return this.trxRentService.findActiveRentsByUser(userId);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all active rent transactions' })
+  @ApiResponse({ status: 200, description: 'Success', type: ResponseEntityDto })
+  async findAllActive() {
+    return this.trxRentService.findAllActive();
+  }
 }
