@@ -16,6 +16,7 @@ async function bootstrap() {
   .setVersion('1.0')
   .addTag('Catalogue', 'Module Catalogue')
   .addTag('User', 'Module User')
+  .addTag('Transaction Rent', 'Module Rent Book')
   .build();
   const document = SwaggerModule.createDocument(app, setupSwagger);
   SwaggerModule.setup('api', app, document);

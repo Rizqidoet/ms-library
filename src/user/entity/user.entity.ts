@@ -1,5 +1,6 @@
+import { TrxRentEntity } from "src/trx-rent/entity/trx-rent.entity";
 import { RoleEnum } from "src/utils/enum/role.enum";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('user')
 export class UserEntity {
@@ -18,6 +19,7 @@ export class UserEntity {
   @Column({ type: 'enum', enum: RoleEnum, default: RoleEnum.MEMBER })
   role: RoleEnum;
 
-  
+  @OneToMany(() => TrxRentEntity, (rent) => rent.user)
+  rents: TrxRentEntity[];
 
 }

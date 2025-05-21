@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, Length } from "class-validator";
+import { IsInt, IsNotEmpty, Length, Max, Min } from "class-validator";
 
 export class CataloguePostDto {
   @ApiProperty()
@@ -17,7 +17,9 @@ export class CataloguePostDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  @Length(1, 4)
+  @IsInt()
+  @Min(0)
+  @Max(100)
   stok: number;
 
   @ApiProperty()

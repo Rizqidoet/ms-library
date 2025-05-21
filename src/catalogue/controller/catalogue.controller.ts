@@ -50,8 +50,6 @@ export class CatalogueController {
   @ApiOperation({ summary: 'Delete catalogue data by id' })
   @ApiResponse({ status: 200, description: 'Deleted', type: ResponseEntityDto })
   Delete(@Param('id') id: number): Promise<ResponseEntityDto<null>> {
-    console.log('controller id delete', id);
-    
     return this.catalogueService.delete(id);
   }
 }

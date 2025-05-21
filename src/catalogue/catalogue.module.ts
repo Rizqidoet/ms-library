@@ -8,6 +8,6 @@ import { CatalogueController } from './controller/catalogue.controller';
   imports: [TypeOrmModule.forFeature([CatalogueEntity])],
   controllers: [CatalogueController],
   providers: [CatalogueService],
-  exports: [CatalogueService]
+  exports: [CatalogueService, TypeOrmModule]
 })
 export class CatalogueModule {}

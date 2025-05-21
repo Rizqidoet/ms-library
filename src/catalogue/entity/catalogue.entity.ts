@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { TrxRentEntity } from "src/trx-rent/entity/trx-rent.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('catalogue')
 export class CatalogueEntity {
@@ -16,4 +17,7 @@ export class CatalogueEntity {
   
   @Column({ length: 150 })
   author: string;
+
+  @OneToMany(() => TrxRentEntity, (rent) => rent.user)
+  rents: TrxRentEntity[];
 }
