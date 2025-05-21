@@ -7,6 +7,7 @@ import { CatalogueController } from './controller/catalogue.controller';
 @Module({
   imports: [TypeOrmModule.forFeature([CatalogueEntity])],
   controllers: [CatalogueController],
-  providers: [CatalogueService]
+  providers: [CatalogueService],
+  exports: [CatalogueService]
 })
 export class CatalogueModule {}

@@ -1,19 +1,19 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity('catalogue')
 export class CatalogueEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ length: 150 })
   title: string;
 
-  @Column()
+  @Column({ length: 100 })
   category: string;
   
   @Column()
   stok: number;
   
-  @Column()
+  @Column({ length: 150 })
   author: string;
 }

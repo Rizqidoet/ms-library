@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CatalogueModule } from './catalogue/catalogue.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CatalogueModule } from './catalogue/catalogue.module';
       entities: [__dirname + '/**/*.entity.{ts,js}'],
     }),
     CatalogueModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
