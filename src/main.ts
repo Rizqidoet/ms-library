@@ -14,6 +14,7 @@ async function bootstrap() {
   .setTitle('MS-Library')
   .setDescription('API Documentation for ms-libarary')
   .setVersion('1.0')
+  .addServer('/api')
   .addTag('Catalogue', 'Module Catalogue')
   .addTag('User', 'Module User')
   .addTag('Transaction Rent', 'Module Rent Book')
@@ -22,6 +23,12 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
   
   app.useGlobalPipes(new ValidationPipe());
+  app.setGlobalPrefix('api');
+  app.enableCors({
+    origin: 'http://localhost:4200',
+    credentials: true,
+  });
+
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
