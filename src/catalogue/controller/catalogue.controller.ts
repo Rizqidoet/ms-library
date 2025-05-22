@@ -38,12 +38,12 @@ export class CatalogueController {
     return this.catalogueService.create(payload);
   }
 
-  @Put()
+  @Put(':id')
   @ApiOperation({ summary: 'Update catalogue data by id' })
   @ApiResponse({ status: 200, description: 'Updated', type: ResponseEntityDto })
-  Update(@Body() payload: CataloguePostDto) {
+  Update(@Param('id') id: number, @Body() payload: CataloguePostDto) {
     if (!payload.id) throw new BadRequestException('ID Cannot Be Null');
-    return this.catalogueService.update(payload);
+    return this.catalogueService.update(+id, payload);
   }
 
   @Delete(':id')

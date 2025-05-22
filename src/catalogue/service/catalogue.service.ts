@@ -56,8 +56,7 @@ export class CatalogueService {
     return response;
   }
 
-  async update(payload: CataloguePostDto): Promise<ResponseEntityDto<CatalogueEntity>> {
-    const { id } = payload;
+  async update(id: number, payload: CataloguePostDto): Promise<ResponseEntityDto<CatalogueEntity>> {
     const catalogue = await this.catalogueRepo.findOneBy({ id });
     if (!catalogue) throw new NotFoundException('Catalogue Not Found');
     
