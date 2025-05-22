@@ -36,12 +36,12 @@ export class UserController {
     return this.userService.create(payload);
   }
 
-  @Put()
+  @Put(':id')
   @ApiOperation({ summary: 'Update user data by id' })
   @ApiResponse({ status: 200, description: 'Updated', type: ResponseEntityDto })
-  Update(@Body() payload: UserPostDto) {
+  Update(@Param('id') id: number, @Body() payload: UserPostDto) {
     if (!payload.id) throw new BadRequestException('ID Cannot Be Null');
-    return this.userService.update(payload);
+    return this.userService.update(+id, payload);
   }
 
   @Delete(':id')
